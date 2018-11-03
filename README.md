@@ -56,3 +56,47 @@ INFO: [MilterGatewayManager]: service has been started
 ^C
 ```
 and could be **stopped** with **[CTRL-c]** key combination.
+
+Under **Linux**, you can see with following command, on which **ipv4-address and port** the **InfoMilter.jar** was bind to:
+```bash
+# netstat -tulpen | grep java
+tcp       0      0 127.0.0.1:10099        0.0.0.0:*            LISTEN      1000       38821      2520/java
+```
+
+## Postfix Milter integration
+In order to include InforMilter.jar with ![Postfix](http://www.postfix.org/), minimal adjustments are required in the two following configuration files of Postfix.
+  - ```/etc/postfix/main.cf```
+  - ```/etc/postfix/master.cf```
+
+##### ```/etc/postfix/main.cf``` 
+(Only relevant part of the configuration file!)
+```
+# --------------------------------------------------------------------------------
+# New - http://www.postfix.org/MILTER_README.html
+# MILTER CONFIGURATIONS
+# --------------------------------------------------------------------------------
+
+# JMilter (info_milter)
+info_milter = inet:127.0.0.1:10099
+```
+
+##### ```/etc/postfix/master.cf```
+
+(Only relevant part of the configuration file!)
+```
+#
+# Postfix master process configuration file.  For details on the format
+# of the file, see the master(5) manual page (command: "man 5 master").
+#
+# Do not forget to execute "postfix reload" after editing this file.
+#
+# ==========================================================================
+# service type  private unpriv  chroot  wakeup  maxproc command + args
+#               (yes)   (yes)   (yes)   (never) (100)
+# ==========================================================================
+smtp      inet  n       -       n       -       -       smtpd
+# InfoMilter
+   -o smtpd_milters=${info_milter}
+```
+
+:exclamation: **After the changes in the configuration files, you have to restart the Postfix Daemon!**
