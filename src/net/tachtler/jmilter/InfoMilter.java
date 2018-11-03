@@ -57,7 +57,7 @@ public class InfoMilter {
 
 		GatewayConfig gatewayConfig = new GatewayConfig();
 		gatewayConfig.setAddress("127.0.0.1");
-		gatewayConfig.setPort(4545);
+		gatewayConfig.setPort(10099);
 		gatewayConfig.setTcpLoggingEnabled(true);
 		gatewayConfig.setTcpLogLevel("DEBUG");
 
