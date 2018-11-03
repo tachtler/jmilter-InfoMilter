@@ -783,3 +783,14 @@ test e-Mail.
 Greetings
 
 ```
+## TODO:
+A list of possible changes for the future:
+
+- Add the possibility to submit parameters minimal for ```host``` and  ```port```.
+- Add the possibility to use a configuration file.
+- Add a systemd script.
+
+## Thanks to
+Many thanks for the great work, support and help to realize this project:
+
+- Dmitry from nightcode.org [nightcode/jmilter](https://github.com/nightcode/jmilter)
