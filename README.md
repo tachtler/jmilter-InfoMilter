@@ -68,7 +68,7 @@ In order to include InforMilter.jar with ![Postfix](http://www.postfix.org/), mi
   - ```/etc/postfix/main.cf```
   - ```/etc/postfix/master.cf```
 
-##### ```/etc/postfix/main.cf``` 
+#### ```/etc/postfix/main.cf``` 
 (Only relevant part of the configuration file!)
 ```
 # --------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ In order to include InforMilter.jar with ![Postfix](http://www.postfix.org/), mi
 info_milter = inet:127.0.0.1:10099
 ```
 
-##### ```/etc/postfix/master.cf```
+#### ```/etc/postfix/master.cf```
 
 (Only relevant part of the configuration file!)
 ```
@@ -100,3 +100,42 @@ smtp      inet  n       -       n       -       -       smtpd
 ```
 
 :exclamation: **After the changes in the configuration files, you have to restart the Postfix Daemon!**
+
+## Telnet e-Mail-Test
+The following **telnet session** will show you the usage of the InfoMilter.jar in combination with ```telnet```.
+```bash
+# telnet 127.0.0.1 25
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+220 test.example.com ESMTP Postfix
+ehlo test.example.com
+250-test.example.com
+250-PIPELINING
+250-SIZE 10240000
+250-VRFY
+250-ETRN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250 DSN
+mail from: <root@example.com>
+250 2.1.0 Ok
+rcpt to: <klaus@example.com>
+250 2.1.5 Ok
+data
+354 End data with <CR><LF>.<CR><LF>
+Subject: Test e-Mail.
+From: sender@example.com
+To: receiver@example.com
+
+Hello,
+
+test e-Mail.
+
+Greetings
+.
+250 2.0.0 Ok: queued as 99AB86E6A8D
+quit
+221 2.0.0 Bye
+Connection closed by foreign host.
+```
