@@ -55,4 +55,4 @@ Nov 03, 2018 11:31:58 AM org.nightcode.common.service.AbstractService started
 INFO: [MilterGatewayManager]: service has been started
 ^C
 ```
-and could be **stopped** with [CTRL-c] key combination.
+and could be **stopped** with **[CTRL-c]** key combination.
