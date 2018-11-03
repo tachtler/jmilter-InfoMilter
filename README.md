@@ -139,3 +139,591 @@ quit
 221 2.0.0 Bye
 Connection closed by foreign host.
 ```
+
+## LOG-File output
+While using the InfoMilter.jar the following output will be written to the **standard command output (```screen / shell```) and a folder named logs will be created, which includes the ```jmilter.log``` file and \*.tar.gz files with older logs.**
+
+An **example output file** could be look like this. (It's based on the **Telnet e-Mail-Test** - **telnet-session** shown above):
+```
+----------------------------------------: 
+JMilter - ENTRY: connect                : MilterContext context, String hostname, @Nullable InetAddress address
+----------------------------------------: 
+*hostname                               : localhost
+*address.getCanonicalHostName()         : localhost
+*address.getHostAddress()               : 127.0.0.1
+*address.getHostName()                  : localhost
+*address.getAddress()                   : Octet: [127, 0, 0, 1] / Byte: [127, 0, 0, 1]
+*address.isAnyLocalAddress()            : false
+*address.isLinkLocalAddress()           : false
+*address.isLoopbackAddress()            : true
+*address.isMCGlobal()                   : false
+*address.isMCLinkLocal()                : false
+*address.isMCNodeLocal()                : false
+*address.isMCOrgLocal()                 : false
+*address.isMCSiteLocal()                : false
+*address.isMulticastAddress()           : false
+*address.isReachable(timeout)           : true
+*netif.getDisplayName()                 : lo
+*netif.getIndex()                       : 1
+*netif.getMTU()                         : 65536
+*netif.getName()                        : lo
+*netif.getHardwareAddress()             : null
+*netif.getInetAddresses()               : /127.0.0.1
+*netif.getInterfaceAddresses()          : [/127.0.0.1/8 [null]]
+*netif.getParent()                      : null
+*netif.isLoopback()                     : true
+*netif.isPointToPoint()                 : false
+*netif.isUp()                           : true
+*netif.isVirtual()                      : false
+*netif.supportsMulticast()              : false
+*address.isReachable(netif, ttl, time...: true
+*address.isSiteLocalAddress()           : false
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : CONNECT
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+----------------------------------------: 
+JMilter - LEAVE: connect                : MilterContext context, String hostname, @Nullable InetAddress address
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: helo                   : MilterContext context, String helohost
+----------------------------------------: 
+*helohost                               : test.example.com
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : HELO
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+----------------------------------------: 
+JMilter - LEAVE: helo                   : MilterContext context, String helohost
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: envfrom                : MilterContext context, List<String> from
+----------------------------------------: 
+*from.get(i)                            : [0] <root@example.com>
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : MAIL_FROM
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+----------------------------------------: 
+JMilter - LEAVE: envfrom                : MilterContext context, List<String> from
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: envrcpt                : MilterContext context, List<String> recipients
+----------------------------------------: 
+*recipients.get(i)                      : [0] <klaus@example.com>
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : RECIPIENTS
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+----------------------------------------: 
+JMilter - LEAVE: envrcpt                : MilterContext context, List<String> recipients
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: data                   : MilterContext context, byte[] payload
+----------------------------------------: 
+*payload                                : null
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : DATA
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: data                   : MilterContext context, byte[] payload
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: header                 : MilterContext context, String headerName, String headerValue
+----------------------------------------: 
+*headerName: headerValue                : Subject: Test e-Mail.
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : HEADERS
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+*context.getMacros(SMFIC_HEADER)        : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_HEADER)|("i")  : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: header                 : MilterContext context, String headerName, String headerValue
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: header                 : MilterContext context, String headerName, String headerValue
+----------------------------------------: 
+*headerName: headerValue                : From: sender@example.com
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : HEADERS
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+*context.getMacros(SMFIC_HEADER)        : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_HEADER)|("i")  : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: header                 : MilterContext context, String headerName, String headerValue
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: header                 : MilterContext context, String headerName, String headerValue
+----------------------------------------: 
+*headerName: headerValue                : To: receiver@example.com
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : HEADERS
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+*context.getMacros(SMFIC_HEADER)        : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_HEADER)|("i")  : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: header                 : MilterContext context, String headerName, String headerValue
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: header                 : MilterContext context, String headerName, String headerValue
+----------------------------------------: 
+*headerName: headerValue                : Message-Id: <20181103101829.99AB86E6A8D@test.example.com>
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : HEADERS
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+*context.getMacros(SMFIC_HEADER)        : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_HEADER)|("i")  : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: header                 : MilterContext context, String headerName, String headerValue
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: header                 : MilterContext context, String headerName, String headerValue
+----------------------------------------: 
+*headerName: headerValue                : Date: Sat,  3 Nov 2018 11:18:21 +0100 (CET)
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : HEADERS
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+*context.getMacros(SMFIC_HEADER)        : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_HEADER)|("i")  : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: header                 : MilterContext context, String headerName, String headerValue
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: eoh                    : MilterContext context
+----------------------------------------: 
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : EOH
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+*context.getMacros(SMFIC_HEADER)        : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_HEADER)|("i")  : 99AB86E6A8D
+*context.getMacros(SMFIC_EOH)           : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_EOH)|("i")     : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: eoh                    : MilterContext context
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: body                   : MilterContext context, String bodyChun
+----------------------------------------: 
+*bodyChunk <-- (Start at next line) --> : 
+Hello,
+
+test e-Mail.
+
+Greetings
+
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : BODY
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+*context.getMacros(SMFIC_HEADER)        : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_HEADER)|("i")  : 99AB86E6A8D
+*context.getMacros(SMFIC_EOH)           : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_EOH)|("i")     : 99AB86E6A8D
+*context.getMacros(SMIFC_BODY)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_BODY)|("i")    : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: body                   : MilterContext context, String bodyChun
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: eom                    : MilterContext context, @Nullable String bodyChunk
+----------------------------------------: 
+*bodyChunk <-- (Start at next line) --> : 
+null
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : EOM
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+*context.getMacros(SMFIC_HEADER)        : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_HEADER)|("i")  : 99AB86E6A8D
+*context.getMacros(SMFIC_EOH)           : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_EOH)|("i")     : 99AB86E6A8D
+*context.getMacros(SMIFC_BODY)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_BODY)|("i")    : 99AB86E6A8D
+*context.getMacros(SMIFC_BODYEOB)       : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_BODYEOB)|("i") : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: eom                    : MilterContext context, @Nullable String bodyChunk
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: abort                  : MilterContext context, MilterPacket packet
+----------------------------------------: 
+*packet                                 : MilterPacket{command=65, payload=EMTPY}
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : EOM
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+*context.getMacros(SMFIC_HEADER)        : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_HEADER)|("i")  : 99AB86E6A8D
+*context.getMacros(SMFIC_EOH)           : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_EOH)|("i")     : 99AB86E6A8D
+*context.getMacros(SMIFC_BODY)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_BODY)|("i")    : 99AB86E6A8D
+*context.getMacros(SMIFC_BODYEOB)       : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_BODYEOB)|("i") : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: abort                  : MilterContext context, MilterPacket packet
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: abort                  : MilterContext context, MilterPacket packet
+----------------------------------------: 
+*packet                                 : MilterPacket{command=65, payload=EMTPY}
+*context.getMtaProtocolVersion()        : 6
+*context.getSessionProtocolVersion()    : 6
+*ontextt.milterProtocolVersion()        : 6
+*context.PROTOCOL_VERSION               : 6
+*context.getMacros(ttl)                 : null
+*context.getMacros(timeout)             : null
+*context.getMtaActions()                : Actions: 000001FF
+*context.getMtaProtocolSteps()          : ProtocolSteps: 001FFFFF
+*context.getSessionProtocolSteps()      : ProtocolSteps: 00000000
+*context.getSessionState()              : EOM
+*context.id()                           : 3c83c09a-3267-489a-8e7c-d64c741c82e5
+*context.milterActions()                : Actions: 00000001
+*context.milterProtocolSteps()          : ProtocolSteps: 00000000
+*context.getMacros(SMIFC_CONNECT)       : {v=Postfix 2.10.1, {daemon_name}=test.example.com, j=test.example.com}
+*context.getMacros(SMIFC_CONNECT)|("v") : Postfix 2.10.1
+*context.getMacros(SMIFC_CONNECT)|("{...: test.example.com
+*context.getMacros(SMIFC_CONNECT)|("j") : test.example.com
+*context.getMacros(SMIFC_HELO)          : {}
+*context.getMacros(SMIFC_MAIL)          : {{mail_host}=mx1.example.com, {mail_mailer}=smtp, {mail_addr}=root@example.com}
+*context.getMacros(SMIFC_MAIL)|("{mai...: mx1.example.com
+*context.getMacros(SMIFC_MAIL)|("{mai...: smtp
+*context.getMacros(SMIFC_MAIL)|("{mai...: root@example.com
+*context.getMacros(SMIFC_RCPT)          : {{rcpt_mailer}=smtp, {rcpt_addr}=klaus@example.com, {rcpt_host}=mx1.example.com}
+*context.getMacros(SMIFC_RCPT)|("{rcp...: smtp
+*context.getMacros(SMIFC_RCPT)|("{rcp...: klaus@example.com
+*context.getMacros(SMIFC_RCPT)|("{rcp...: mx1.example.com
+*context.getMacros(SMIFC_DATA)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_DATA)|("i")    : 99AB86E6A8D
+*context.getMacros(SMFIC_HEADER)        : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_HEADER)|("i")  : 99AB86E6A8D
+*context.getMacros(SMFIC_EOH)           : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_EOH)|("i")     : 99AB86E6A8D
+*context.getMacros(SMIFC_BODY)          : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_BODY)|("i")    : 99AB86E6A8D
+*context.getMacros(SMIFC_BODYEOB)       : {i=99AB86E6A8D}
+*context.getMacros(SMIFC_BODYEOB)|("i") : 99AB86E6A8D
+----------------------------------------: 
+JMilter - LEAVE: abort                  : MilterContext context, MilterPacket packet
+----------------------------------------: 
+----------------------------------------: 
+JMilter - ENTRY: close                  : MilterContext arg0
+----------------------------------------: 
+----------------------------------------: 
+JMilter - LEAVE: close                  : MilterContext arg0
+----------------------------------------:
+```
