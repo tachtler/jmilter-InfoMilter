@@ -46,3 +46,13 @@ jar -cvfe InfoMilter.jar *.jar log4j2.xml net/tachtler/jmilter/*.class
 ```
 <PATH-TO-JDK>\bin\jar.exe" -cvfe InfoMilter.jar *.jar log4j2.xml net\tachtler\jmilter\*.class
 ```
+
+## JAR-File execution
+The **execution of the JAR file** could be done, for example on a Linux ```shell``` with following command:
+```bash
+# java -jar InfoMilter.jar 
+Nov 03, 2018 11:31:58 AM org.nightcode.common.service.AbstractService started
+INFO: [MilterGatewayManager]: service has been started
+^C
+```
+and could be **stopped** with [CTRL-c] key combination.
