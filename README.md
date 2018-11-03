@@ -727,3 +727,59 @@ JMilter - ENTRY: close                  : MilterContext arg0
 JMilter - LEAVE: close                  : MilterContext arg0
 ----------------------------------------:
 ```
+
+## E-Mail source code
+After successfully submitting the e-Mail previously generated with the **Telnet e-Mail-Test** - **telnet-session**, it would look like this in the source code: (**Please also note the additional header entry: ```X-Logged: JMilter``` !**)
+```
+Return-Path: <root@example.com>
+Delivered-To: klaus@example.com
+Received: from mx1.example.com ([192.168.0.60])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	by imap.example.com with LMTP id uI83CDx23VsuQgAAhm5hYQ
+	for <klaus@example.com>; Sat, 03 Nov 2018 11:19:40 +0100
+Received: from viruswall.example.com (server70.example.com [192.168.0.70])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by mx1.example.com (Postfix) with ESMTPS id E6D001800091
+	for <klaus@example.com>; Sat,  3 Nov 2018 11:19:39 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx1.example.com E6D001800091
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=example.com; s=main;
+	t=1541240379; bh=nanuAANV0Fc5yhcyI4rRzJpYcbVJ94I51e5pJzCUlf8=;
+	h=Subject:From:To:Date:From;
+	b=JIZTocIPuoqqAs+Gqvoa3bJfhL0K8urk6ljo/gKJQJsaSxvhHSlaHq61Y/+WqPh25
+	 B5BoF/4QJpsACGbYZZGQVwmLW58Z2plCSCDiES59XhuwUbEzSfI/VGjLL/zj/1kVKn
+	 tQ1Cso0cWDMXPm0Bv2qPgRRQP7ySy2erNAKpdS7E=
+X-Amavis-Modified: Mail body modified (using disclaimer) -
+	server70.example.com
+X-Virus-Scanned: amavisd-new at example.com
+X-Spam-Flag: NO
+X-Spam-Score: -1
+X-Spam-Level:
+X-Spam-Status: No, score=-1 tagged_above=-1000.0 required=6.31
+	tests=[ALL_TRUSTED=-1] autolearn=ham autolearn_force=no
+Received: from mx1.example.com ([192.168.0.60])
+	by viruswall.example.com (server70.example.com [192.168.0.70]) (amavisd-new, port 10024)
+	with ESMTP id GartmywRD_ps for <klaus@example.com>;
+	Sat,  3 Nov 2018 11:19:38 +0100 (CET)
+Received: from test.example.com (pmd020.example.com [192.168.0.20])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client CN "*.example.com", Issuer "CAcert Class 3 Root" (verified OK))
+	by mx1.example.com (Postfix) with ESMTPS
+	for <klaus@example.com>; Sat,  3 Nov 2018 11:19:37 +0100 (CET)
+Received: from test.example.com (localhost [127.0.0.1])
+	by test.example.com (Postfix) with ESMTP id 99AB86E6A8D
+	for <klaus@example.com>; Sat,  3 Nov 2018 11:18:21 +0100 (CET)
+Subject: Test e-Mail.
+From: sender@example.com
+To: receiver@example.com
+Message-Id: <20181103101829.99AB86E6A8D@test.example.com>
+Date: Sat,  3 Nov 2018 11:18:21 +0100 (CET)
+X-Logged: JMilter
+
+Hello,
+
+test e-Mail.
+
+Greetings
+
+```
