@@ -3,54 +3,33 @@ Milter for Sendmail or Postfix to log all possible parts of the e-Mail communica
 
 The project was based on the great work of Dmitry from nightcode.org which you can download from here: ![nightcode/jmilter](https://github.com/nightcode/jmilter)
 
-## JAR-File
-The creation of the **InfoMilter.jar** was done with following directory structure:
-```
-javax.inject.jar
-jmilter-0.1.2.jar
-jsr305-1.3.9.jar
-log4j-api-2.11.1.jar
-log4j-core-2.11.1.jar
-netty-buffer-4.1.24.Final.jar
-netty-codec-4.1.24.Final.jar
-netty-common-4.1.24.Final.jar
-netty-handler-4.1.24.Final.jar
-netty-transport-4.1.24.Final.jar
-yaranga-0.5.5.jar
-log4j2.xml
-net/tachtler/jmilter/InfoMilterHandler.java
-net/tachtler/jmilter/package-info.java
-net/tachtler/jmilter/InfoMilter.java
-```
+## JAR-File description
+The **exection of the JAR file with the option ```-h``` or ```--help```** with following command, will show you all **options** you can set, to start the **InfoMilter.jar**:
+```bash
+# java -jar InfoMilter.jar -h
+usage: [-i <IPv4-Address to listen>] [-p <Port to listen>] [-l <TCP-Log-Level>]
+           [-h] [-v] [-d]
 
-The uploaded **InfoMilter.jar** was created with follwing commands:
+InfoMilter for Sendmail or Postfix to log all possible parts of the e-Mail
+communication.
 
-Command for the \*.class compilation:)
+ -d,--debug            DEBUG mode with runtime output
+ -h,--help             Print this usage information
+ -i,--listener <arg>   [REQUIRED] IPv4-Address where the milter is listening on
+ -l,--logging <arg>    Enables the TCP-Logging for JMilter with the specified
+                       log level (INFO, WARN, ERROR, TRACE or DEBUG)
+ -p,--port <arg>       [REQUIRED] Port where the milter is listening on
+ -v,--version          Version of the program
 
-(**Linux**):
-```
-javac -g:none -target 1.8 -cp .:*  net/tachtler/jmilter/*.java
-```
-(**Windows**):
-```
-"<PATH-TO-JDK>\bin\javac.exe" -g:none -target 1.8 -cp *  net\tachtler\jmilter\*.java
-```
+Copyright (c) 2018 Klaus Tachtler, <klaus@tachtler.net>. All Rights Reserved.
+Version 1.0.
 
-Command for the JAR file creation:
-
-(**Linux**):
-```
-jar -cvfe InfoMilter.jar *.jar log4j2.xml net/tachtler/jmilter/*.class
-```
-(**Windows**):
-```
-<PATH-TO-JDK>\bin\jar.exe" -cvfe InfoMilter.jar *.jar log4j2.xml net\tachtler\jmilter\*.class
 ```
 
 ## JAR-File execution
 The **execution of the JAR file** could be done, for example on a Linux ```shell``` with following command:
 ```bash
-# java -jar InfoMilter.jar 
+# java -jar InfoMilter.jar -i 127.0.0.1 -p 10099
 Nov 03, 2018 11:31:58 AM org.nightcode.common.service.AbstractService started
 INFO: [MilterGatewayManager]: service has been started
 ^C
@@ -783,12 +762,58 @@ test e-Mail.
 Greetings
 
 ```
+
+## JAR-File
+The creation of the **InfoMilter.jar** was done with following directory structure:
+```
+commons-cli-1.4.jar
+javax.inject.jar
+jmilter-0.1.2.jar
+jsr305-1.3.9.jar
+log4j-api-2.11.1.jar
+log4j-core-2.11.1.jar
+netty-buffer-4.1.24.Final.jar
+netty-codec-4.1.24.Final.jar
+netty-common-4.1.24.Final.jar
+netty-handler-4.1.24.Final.jar
+netty-transport-4.1.24.Final.jar
+yaranga-0.5.5.jar
+log4j2.xml
+net/tachtler/jmilter/InfoMilterHandler.java
+net/tachtler/jmilter/package-info.java
+net/tachtler/jmilter/InfoMilter.java
+```
+
+The uploaded **InfoMilter.jar** was created with follwing commands:
+
+Command for the \*.class compilation:)
+
+(**Linux**):
+```
+javac -g:none -target 1.8 -cp .:*  net/tachtler/jmilter/*.java
+```
+(**Windows**):
+```
+"<PATH-TO-JDK>\bin\javac.exe" -g:none -target 1.8 -cp *  net\tachtler\jmilter\*.java
+```
+
+Command for the JAR file creation:
+
+(**Linux**):
+```
+jar -cvfe InfoMilter.jar *.jar log4j2.xml net/tachtler/jmilter/*.class
+```
+(**Windows**):
+```
+<PATH-TO-JDK>\bin\jar.exe" -cvfe InfoMilter.jar *.jar log4j2.xml net\tachtler\jmilter\*.class
+```
+
 ## TODO:
 A list of possible changes for the future:
 
-- Add the possibility to submit parameters minimal for ```host``` and  ```port```.
 - Add the possibility to use a configuration file.
 - Add a systemd script.
+- Build a rpm package for CentOS-7.
 
 ## Thanks to
 Many thanks for the great work, support and help to realize this project:
