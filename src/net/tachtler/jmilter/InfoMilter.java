@@ -5,6 +5,7 @@
  */
 package net.tachtler.jmilter;
 
+import org.apache.commons.cli.ParseException;
 import org.nightcode.common.service.ServiceManager;
 import org.nightcode.milter.MilterHandler;
 import org.nightcode.milter.config.GatewayConfig;
@@ -53,30 +54,48 @@ public class InfoMilter {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InfoMilterCLIArgParserException {
 
-		GatewayConfig gatewayConfig = new GatewayConfig();
-		gatewayConfig.setAddress("127.0.0.1");
-		gatewayConfig.setPort(10099);
-		gatewayConfig.setTcpLoggingEnabled(true);
-		gatewayConfig.setTcpLogLevel("DEBUG");
+		/*
+		 * Read the arguments from command line into the dwuaFileBean.
+		 */
+		InfoMilterCLIArgsParserBean argsBean = new InfoMilterCLIArgsParserBean(null, 0, null, null);
 
-		// indicates what changes you intend to do with messages
-		Actions milterActions = Actions.builder()
-				.addHeader()
-				.build();
+		try {
+			argsBean = InfoMilterCLIArgsParser.readArgs(argsBean, args);
+		} catch (ParseException eArgsBean) {
+			eArgsBean.printStackTrace();
+			throw new RuntimeException(
+					"***** Program stop, because InfoMilter could not be initialized! ***** (For more details, see error messages and caused by below).",
+					eArgsBean);
+		}
 
-		// indicates which steps you want to skip
-		ProtocolSteps milterProtocolSteps = ProtocolSteps.builder()
-				.build();
+		/*
+		 * Start JMilter only, if all required args are set.
+		 */
+		if (argsBean.getInetAddress() != null && argsBean.getPort() != 0 && argsBean.getTcpLoggingEnabled() != null
+				&& argsBean.getTcpLogLevel() != null) {
+			GatewayConfig gatewayConfig = new GatewayConfig();
+			gatewayConfig.setAddress(argsBean.getInetAddress().getHostAddress());
+			gatewayConfig.setPort(argsBean.getPort());
+			gatewayConfig.setTcpLoggingEnabled(argsBean.getTcpLoggingEnabled());
+			gatewayConfig.setTcpLogLevel(argsBean.getTcpLogLevel());
 
-	    // a simple milter handler
-		MilterHandler milterHandler = new InfoMilterHandler(milterActions, milterProtocolSteps);		
-	
-		MilterGatewayManager gatewayManager = new MilterGatewayManager(gatewayConfig
-				, () -> new MilterChannelHandler(milterHandler), ServiceManager.instance());
-		
-		gatewayManager.start();
+			// indicates what changes you intend to do with messages
+			Actions milterActions = Actions.builder().addHeader().build();
+
+			// indicates which steps you want to skip
+			ProtocolSteps milterProtocolSteps = ProtocolSteps.builder().build();
+
+			// a simple milter handler
+			MilterHandler milterHandler = new InfoMilterHandler(milterActions, milterProtocolSteps);
+
+			MilterGatewayManager gatewayManager = new MilterGatewayManager(gatewayConfig,
+					() -> new MilterChannelHandler(milterHandler), ServiceManager.instance());
+
+			gatewayManager.start();
+		}
+
 	}
 
 }
