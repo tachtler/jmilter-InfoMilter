@@ -781,9 +781,9 @@ In the upcomming dialog, choose a **Launch configuration:** (if you have one), a
 
 ![eclipse-build-runnable-jar-file-step-3.png](doc/eclipse-build-runnable-jar-file-step-3.png)
 
-You're done!
+**You're done!**
 
-## JAR-File (```shell``` ord ```console```)
+## JAR-File (```shell``` or ```console```)
 The creation of the **InfoMilter.jar** was done with following directory structure:
 ```
 commons-cli-1.4.jar
