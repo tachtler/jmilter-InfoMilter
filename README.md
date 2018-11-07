@@ -763,7 +763,7 @@ Greetings
 
 ```
 
-## JAR-File
+## JAR-File (```shell``` ord ```console```)
 The creation of the **InfoMilter.jar** was done with following directory structure:
 ```
 commons-cli-1.4.jar
@@ -786,7 +786,7 @@ net/tachtler/jmilter/InfoMilter.java
 
 First create a **META-INF/MANIFEST.MF** file, with following commands:
 ```
-# mkidr META-INF
+# mkdir META-INF
 # vi META-INF/MANIFEST.MF
 ```
 with following content:
@@ -844,7 +844,7 @@ adding: net/tachtler/jmilter/InfoMilterCLIArgsParserBean.class(in = 2109) (out= 
 adding: net/tachtler/jmilter/InfoMilterCLIArgsParser.class(in = 5128) (out= 2400)(deflated 53%)
 adding: net/tachtler/jmilter/InfoMilterHandler.class(in = 18159) (out= 5419)(deflated 70%)
 ```
-(**Example Execution: Linux**):
+(**Example Execution: Linux (all \*.jar files must be shipped with InfoMilter.jar !!!**):
 ```
 # java -jar InfoMilter.jar -h
 usage: [-i <IPv4-Address to listen>] [-p <Port to listen>] [-l <TCP-Log-Level>]
@@ -865,6 +865,10 @@ Copyright (c) 2018 Klaus Tachtler, <klaus@tachtler.net>. All Rights Reserved.
 Version 1.0.
 
 ```
+
+## JAR-File ([Eclipse from ECLIPSE Foundation](http://www.eclipse.org/))
+
+
 
 ## TODO:
 A list of possible changes for the future:
