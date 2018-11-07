@@ -784,7 +784,7 @@ net/tachtler/jmilter/package-info.java
 net/tachtler/jmilter/InfoMilter.java
 ```
 
-First create a **META-INF/MENIFEST.MF** file, with following commands:
+First create a **META-INF/MANIFEST.MF** file, with following commands:
 ```
 # mkidr META-INF
 # vi META-INF/MANIFEST.MF
