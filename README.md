@@ -784,6 +784,19 @@ net/tachtler/jmilter/package-info.java
 net/tachtler/jmilter/InfoMilter.java
 ```
 
+First create a **META-INF/MENIFEST.MF** file, with following commands:
+```
+# mkidr META-INF
+# vi META-INF/MANIFEST.MF
+```
+with following content:
+```
+Manifest-Version: 1.0
+Class-Path: . commons-cli-1.4.jar javax.inject.jar jmilter-0.1.2.jar jsr305-1.3.9.jar log4j-api-2.11.1.jar log4j-core-2.11.1.jar netty-buffer-4.1.24.Final.jar netty-codec-4.1.24.Final.jar netty-common-4.1.24.Final.jar netty-handler-4.1.24.Final.jar netty-transport-4.1.24.Final.jar yaranga-0.5.5.jar
+Main-Class: net.tachtler.jmilter.InfoMilter
+
+```
+
 The uploaded **InfoMilter.jar** was created with follwing commands:
 
 Command for the \*.class compilation:)
@@ -801,11 +814,56 @@ Command for the JAR file creation:
 
 (**Linux**):
 ```
-jar -cvfe InfoMilter.jar *.jar log4j2.xml net/tachtler/jmilter/*.class
+jar cvfm InfoMilter.jar META-INF/MANIFEST.MF log4j2.xml *.jar net/tachtler/jmilter/*.class
 ```
 (**Windows**):
 ```
-<PATH-TO-JDK>\bin\jar.exe" -cvfe InfoMilter.jar *.jar log4j2.xml net\tachtler\jmilter\*.class
+<PATH-TO-JDK>\bin\jar.exe" cvfe InfoMilter.jar META-INF/MANIFEST.MF log4j2.xml *.jar net/tachtler/jmilter/*.class
+```
+
+(**Example: Linux**):
+```
+# jar cvfm InfoMilter.jar META-INF/MANIFEST.MF log4j2.xml *.jar net/tachtler/jmilter/*.class
+added manifest
+adding: log4j2.xml(in = 1029) (out= 482)(deflated 53%)
+adding: commons-cli-1.4.jar(in = 53820) (out= 49458)(deflated 8%)
+adding: javax.inject.jar(in = 2497) (out= 1796)(deflated 28%)
+adding: jmilter-0.1.2.jar(in = 62480) (out= 53981)(deflated 13%)
+adding: jsr305-1.3.9.jar(in = 33015) (out= 24797)(deflated 24%)
+adding: log4j-api-2.11.1.jar(in = 264058) (out= 236389)(deflated 10%)
+adding: log4j-core-2.11.1.jar(in = 1607936) (out= 1426304)(deflated 11%)
+adding: netty-buffer-4.1.24.Final.jar(in = 272233) (out= 257372)(deflated 5%)
+adding: netty-codec-4.1.24.Final.jar(in = 316387) (out= 286836)(deflated 9%)
+adding: netty-common-4.1.24.Final.jar(in = 576984) (out= 508090)(deflated 11%)
+adding: netty-handler-4.1.24.Final.jar(in = 375612) (out= 340416)(deflated 9%)
+adding: netty-transport-4.1.24.Final.jar(in = 457385) (out= 409044)(deflated 10%)
+adding: yaranga-0.5.5.jar(in = 55767) (out= 47372)(deflated 15%)
+adding: net/tachtler/jmilter/InfoMilter.class(in = 3452) (out= 1484)(deflated 57%)
+adding: net/tachtler/jmilter/InfoMilterCLIArgParserException.class(in = 550) (out= 314)(deflated 42%)
+adding: net/tachtler/jmilter/InfoMilterCLIArgsParserBean.class(in = 2109) (out= 1009)(deflated 52%)
+adding: net/tachtler/jmilter/InfoMilterCLIArgsParser.class(in = 5128) (out= 2400)(deflated 53%)
+adding: net/tachtler/jmilter/InfoMilterHandler.class(in = 18159) (out= 5419)(deflated 70%)
+```
+(**Example Execution: Linux**):
+```
+# java -jar InfoMilter.jar -h
+usage: [-i <IPv4-Address to listen>] [-p <Port to listen>] [-l <TCP-Log-Level>]
+           [-h] [-v] [-d]
+
+InfoMilter for Sendmail or Postfix to log all possible parts of the e-Mail
+communication.
+
+ -d,--debug            DEBUG mode with runtime output
+ -h,--help             Print this usage information
+ -i,--listener <arg>   [REQUIRED] IPv4-Address where the milter is listening on
+ -l,--logging <arg>    Enables the TCP-Logging for JMilter with the specified
+                       log level (INFO, WARN, ERROR, TRACE or DEBUG)
+ -p,--port <arg>       [REQUIRED] Port where the milter is listening on
+ -v,--version          Version of the program
+
+Copyright (c) 2018 Klaus Tachtler, <klaus@tachtler.net>. All Rights Reserved.
+Version 1.0.
+
 ```
 
 ## TODO:
