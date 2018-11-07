@@ -763,6 +763,26 @@ Greetings
 
 ```
 
+## JAR-File ([Eclipse from ECLIPSE Foundation](http://www.eclipse.org/))
+The creation of the **InfoMilter.jar** could be done using [Eclipse from ECLIPSE Foundation](http://www.eclipse.org/) in only three steps:
+
+**Step 1:**
+Choose from [Eclipse from ECLIPSE Foundation](http://www.eclipse.org/) menu: File | Export...
+
+![eclipse-build-runnable-jar-file-step-1.png](doc/eclipse-build-runnable-jar-file-step-1.png)
+
+**Step 2:**
+On the upcomming dialog, search and choose **Runnable JAR file** and click **Next >**:
+
+![eclipse-build-runnable-jar-file-step-2.png](doc/eclipse-build-runnable-jar-file-step-2.png)
+
+**Step 3:**
+In the upcomming dialog, choose a **Launch configuration:** (if you have one), and the **Export destination:** and **IMPORTANT**, choose **Package required libraries into generated JAR** before you click **Finish**:
+
+![eclipse-build-runnable-jar-file-step-3.png](doc/eclipse-build-runnable-jar-file-step-3.png)
+
+You're done!
+
 ## JAR-File (```shell``` ord ```console```)
 The creation of the **InfoMilter.jar** was done with following directory structure:
 ```
@@ -865,10 +885,6 @@ Copyright (c) 2018 Klaus Tachtler, <klaus@tachtler.net>. All Rights Reserved.
 Version 1.0.
 
 ```
-
-## JAR-File ([Eclipse from ECLIPSE Foundation](http://www.eclipse.org/))
-
-
 
 ## TODO:
 A list of possible changes for the future:
