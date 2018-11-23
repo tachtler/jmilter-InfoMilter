@@ -19,7 +19,7 @@
 				<CronTriggeringPolicy schedule="0 0 * * * ?" />
 			</Policies>
 			<DefaultRolloverStrategy>
-				<Delete basePath="${baseDir}" maxDepth="2">
+				<Delete basePath="${baseDir}" maxDepth="3">
 					<IfFileName glob="*/jmilter-*.log.gz" />
 					<IfLastModified age="31d" />
 				</Delete>
