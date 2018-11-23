@@ -64,8 +64,7 @@ public class InfoMilter {
 		try {
 			argsBean = InfoMilterCLIArgsParser.readArgs(argsBean, args);
 		} catch (ParseException eArgsBean) {
-			eArgsBean.printStackTrace();
-			throw new RuntimeException(
+			throw new InfoMilterCLIArgParserException(
 					"***** Program stop, because InfoMilter could not be initialized! ***** (For more details, see error messages and caused by below).",
 					eArgsBean);
 		}

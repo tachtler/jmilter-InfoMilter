@@ -63,9 +63,6 @@ public class InfoMilterHandler extends AbstractMilterHandler {
 	private static int timeout = 3;
 	private static int ttl = 64;
 
-	public final static char CR = (char) 0x0D;
-	public final static char LF = (char) 0x0A;
-
 	/**
 	 * @param milterActions
 	 * @param milterProtocolSteps
@@ -294,6 +291,12 @@ public class InfoMilterHandler extends AbstractMilterHandler {
 		super.envrcpt(context, recipients);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.nightcode.milter.AbstractMilterHandler#data(org.nightcode.milter.
+	 * MilterContext, byte[])
+	 */
 	@Override
 	public void data(MilterContext context, byte[] payload) throws MilterException {
 
@@ -328,6 +331,12 @@ public class InfoMilterHandler extends AbstractMilterHandler {
 		super.data(context, payload);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.nightcode.milter.AbstractMilterHandler#header(org.nightcode.milter.
+	 * MilterContext, java.lang.String, java.lang.String)
+	 */
 	@Override
 	public void header(MilterContext context, String headerName, String headerValue) throws MilterException {
 
@@ -393,10 +402,10 @@ public class InfoMilterHandler extends AbstractMilterHandler {
 	public void body(MilterContext context, String bodyChunk) throws MilterException {
 
 		log.info("----------------------------------------: ");
-		log.info("JMilter - ENTRY: body                   : MilterContext context, String bodyChun");
+		log.info("JMilter - ENTRY: body                   : MilterContext context, String bodyChunk");
 		log.info("----------------------------------------: ");
 
-		log.info("*bodyChunk <-- (Start at next line) --> : " + CR + LF + bodyChunk);
+		log.info("*bodyChunk <-- (Start at next line) --> : " + System.lineSeparator() + bodyChunk);
 
 		logContext(context);
 		logContext(context, CommandProcessor.SMFIC_CONNECT);
@@ -409,7 +418,7 @@ public class InfoMilterHandler extends AbstractMilterHandler {
 		logContext(context, CommandProcessor.SMFIC_BODY);
 
 		log.info("----------------------------------------: ");
-		log.info("JMilter - LEAVE: body                   : MilterContext context, String bodyChun");
+		log.info("JMilter - LEAVE: body                   : MilterContext context, String bodyChunk");
 		log.info("----------------------------------------: ");
 
 		super.body(context, bodyChunk);
@@ -433,7 +442,7 @@ public class InfoMilterHandler extends AbstractMilterHandler {
 		log.info("JMilter - ENTRY: eom                    : MilterContext context, @Nullable String bodyChunk");
 		log.info("----------------------------------------: ");
 
-		log.info("*bodyChunk <-- (Start at next line) --> : " + CR + LF + bodyChunk);
+		log.info("*bodyChunk <-- (Start at next line) --> : " + System.lineSeparator() + bodyChunk);
 
 		logContext(context);
 		logContext(context, CommandProcessor.SMFIC_CONNECT);
