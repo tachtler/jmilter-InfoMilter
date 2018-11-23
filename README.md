@@ -523,7 +523,7 @@ JMilter - ENTRY: eoh                    : MilterContext context
 JMilter - LEAVE: eoh                    : MilterContext context
 ----------------------------------------: 
 ----------------------------------------: 
-JMilter - ENTRY: body                   : MilterContext context, String bodyChun
+JMilter - ENTRY: body                   : MilterContext context, String bodyChunk
 ----------------------------------------: 
 *bodyChunk <-- (Start at next line) --> : 
 Hello,
@@ -567,7 +567,7 @@ Greetings
 *context.getMacros(SMIFC_BODY)          : {i=99AB86E6A8D}
 *context.getMacros(SMIFC_BODY)|("i")    : 99AB86E6A8D
 ----------------------------------------: 
-JMilter - LEAVE: body                   : MilterContext context, String bodyChun
+JMilter - LEAVE: body                   : MilterContext context, String bodyChunk
 ----------------------------------------: 
 ----------------------------------------: 
 JMilter - ENTRY: eom                    : MilterContext context, @Nullable String bodyChunk
